@@ -54,14 +54,10 @@ jobs:
         id: check_changes
         run: |
           git add solves/
-          if git diff-index --quiet HEAD --; then
-            echo "No changes to commit" > no_changes
-          else
-            echo "Changes to commit" > changes
-          fi
+          git diff-index --quiet HEAD -- || echo "changes"
 
       - name: Commit and push changes
-        if: steps.check_changes.outputs.changes == 'Changes to commit'
+        if: steps.check_changes.outputs.changes == 'changes'
         run: |
           git commit -m "Add output file and today's puzzle to solves directory"
           git push
@@ -69,5 +65,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Handle no changes
-        if: steps.check_changes.outputs.changes == 'No changes to commit'
+        if: steps.check_changes.outputs.changes != 'changes'
         run: echo "No changes to commit, skipping commit step."

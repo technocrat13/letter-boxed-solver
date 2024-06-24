@@ -34,14 +34,14 @@ jobs:
       - name: Create solves directory
         run: mkdir -p solves
 
+      - name: Copy and rename file to today's file
+        run: |
+          cp ${{ steps.run-script.outputs.file_name }} solves/todays.txt
+
       - name: Move output file to solves directory
         run: |
           mv ${{ steps.run-script.outputs.file_name }} solves/
           
-      - name: Copy and rename file to today's file
-        run: |
-          cp solves/$(basename ${{ steps.run-script.outputs.file_name }}) solves/todays.txt
-
       - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'

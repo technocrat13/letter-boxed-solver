@@ -58,7 +58,7 @@ jobs:
 
       - name: Pull latest changes
         if: steps.check_changes.outputs.changes == 'true'
-        run: git pull origin main
+        run: git pull origin master
 
       - name: Commit and push changes
         if: steps.check_changes.outputs.changes == 'true'

@@ -50,10 +50,24 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Commit and push changes
+      - name: Check for changes
+        id: check_changes
         run: |
           git add solves/
-          git commit -m "Add output file to solves directory"
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit" > no_changes
+          else
+            echo "Changes to commit" > changes
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'Changes to commit'
+        run: |
+          git commit -m "Add output file and today's puzzle to solves directory"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Handle no changes
+        if: steps.check_changes.outputs.changes == 'No changes to commit'
+        run: echo "No changes to commit, skipping commit step."

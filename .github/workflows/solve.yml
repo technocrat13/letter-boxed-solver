@@ -56,6 +56,10 @@ jobs:
           git add solves/
           git diff-index --quiet HEAD -- || echo "::set-output name=changes::true"
 
+      - name: Pull latest changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: git pull origin main --rebase
+
       - name: Commit and push changes
         if: steps.check_changes.outputs.changes == 'true'
         run: |

@@ -1,0 +1,46 @@
+# .github/workflows/run_script.yml
+
+name: Solve Today's Letter-Boxed
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # This cron expression means the script will run every day at midnight (UTC)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Run script and capture output file name
+        id: run-script
+        run: |
+          file_name=$(python solver.py)
+          echo "::set-output name=file_name::$file_name"
+
+      - name: Create solves directory
+        run: mkdir -p solves
+
+      - name: Move output file to solves directory
+        run: |
+          mv ${{ steps.run-script.outputs.file_name }} solves/
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Commit and push changes
+        run: |
+          git add solves/
+          git commit -m "Add output file to solves directory"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

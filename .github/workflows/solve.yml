@@ -3,9 +3,9 @@
 name: Solve Today's Letter-Boxed
 
 on:
-  push:
-    branches:
-      - master  # Replace with your branch name if it's different
+  schedule:
+    - cron: '0 13 * * *' # This cron expression means the script will run every day at midnight (UTC)
+
 jobs:
   run-script:
     runs-on: ubuntu-latest

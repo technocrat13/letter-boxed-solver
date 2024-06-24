@@ -3,8 +3,11 @@
 name: Solve Today's Letter-Boxed
 
 on:
-  schedule:
-    - cron: '0 0 * * *' # This cron expression means the script will run every day at midnight (UTC)
+ # schedule:
+  #  - cron: '0 0 * * *' # This cron expression means the script will run every day at midnight (UTC)
+  push:
+    branches:
+      - main  # Replace with your branch name if it's different
 
 jobs:
   run-script:

@@ -170,7 +170,7 @@ import datetime
 now = datetime.datetime.now()
 file_name = f"solves/solve_{now.strftime('%Y-%m-%d')}_{','.join(todays_metadata['sides'])}.txt"
 # output = f"Current date and time: {now}"
-with open(file_name, "w", encoding="utf-8") as file:
+with open(file_name, "x", encoding="utf-8") as file:
     
     file.write(f"{len(all_answers)} solutions to {now.strftime('%d/%m/%Y')}'s letter-boxed\n")
     for answer in all_answers:

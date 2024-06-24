@@ -2,14 +2,10 @@
 
 name: Solve Today's Letter-Boxed
 
-# on:
-#   schedule:
-#     - cron: '0 13 * * *' # This cron expression means the script will run every day at midnight (UTC)
-
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '0 13 * * *' # This cron expression means the script will run every day at midnight (UTC)
+
 
 jobs:
   run-script:
@@ -41,7 +37,10 @@ jobs:
       - name: Move output file to solves directory
         run: |
           mv ${{ steps.run-script.outputs.file_name }} solves/
-          cp ${{ steps.run-script.outputs.file_name }} solves/todays.txt
+          
+      - name: Copy and rename file to today's file
+        run: |
+          cp solves/$(basename ${{ steps.run-script.outputs.file_name }}) solves/todays.txt
 
       - name: Configure Git
         run: |

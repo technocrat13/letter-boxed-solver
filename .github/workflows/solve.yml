@@ -5,7 +5,7 @@ name: Solve Today's Letter-Boxed
 on:
   push:
     branches:
-      - main  # Replace with your branch name if it's different
+      - master  # Replace with your branch name if it's different
 jobs:
   run-script:
     runs-on: ubuntu-latest

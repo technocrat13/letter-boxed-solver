@@ -1,6 +1,7 @@
 # letter-boxed-solver
 
 [![Solve Today's Letter-Boxed](https://github.com/technocrat13/letter-boxed-solver/actions/workflows/solve.yml/badge.svg)](https://github.com/technocrat13/letter-boxed-solver/actions/workflows/solve.yml)
+
 Letter Boxed Solver for the game from The New York Times.
 
 ### Overview

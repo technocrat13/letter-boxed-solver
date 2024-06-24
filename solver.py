@@ -147,7 +147,7 @@ def solve_puzzle(pos, num, wordfile, exclude = [], include = []): # optionally e
 
 # charwords = 'veo, ims, cap, frn' ############
 todays_metadata = get_todays_metadata()
-print(todays_metadata)
+# print(todays_metadata)
 
 
 
@@ -160,15 +160,15 @@ easy_answers_2, num = solve_puzzle(pos, '2', wordfile)
 easy_answers_3, num = solve_puzzle(pos, '3', wordfile, include=[])
 
 all_answers = easy_answers_1 + easy_answers_2 + easy_answers_3
-print(f"{ len(all_answers) = }")
+# print(f"{ len(all_answers) = }")
 
-if todays_metadata['nyt_solution'] in all_answers:
-    print(f"found today's answer: {todays_metadata['nyt_solution']}")
+# if todays_metadata['nyt_solution'] in all_answers:
+#     print(f"found today's answer: {todays_metadata['nyt_solution']}")
 
 
 import datetime
 now = datetime.datetime.now()
-file_name = f"solves/solve_{now.strftime('%Y-%m-%d')}_{','.join(todays_metadata['sides'])}.txt"
+file_name = f"solve_{now.strftime('%Y-%m-%d')}_{','.join(todays_metadata['sides'])}.txt"
 # output = f"Current date and time: {now}"
 with open(file_name, "x", encoding="utf-8") as file:
     

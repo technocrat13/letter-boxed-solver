@@ -1,0 +1,17 @@
+16 solutions to 07/11/2026's letter-boxed
+['BLOWUP', 'PHARYNX'] - ⭐️ NYT solution
+['BAWL', 'LOUP', 'PHARYNX']
+['BLOWY', 'YUP', 'PHARYNX']
+['ALB', 'BLOWUP', 'PHARYNX']
+['BLOWBY', 'YUP', 'PHARYNX']
+['BLOWUP', 'PAP', 'PHARYNX']
+['BLOWUP', 'POP', 'PHARYNX']
+['BLOWUP', 'PUP', 'PHARYNX']
+['BUB', 'BLOWUP', 'PHARYNX']
+['HUB', 'BLOWUP', 'PHARYNX']
+['LAB', 'BLOWUP', 'PHARYNX']
+['PUB', 'BLOWUP', 'PHARYNX']
+['RUB', 'BLOWUP', 'PHARYNX']
+['ARAB', 'BLOWUP', 'PHARYNX']
+['BLAB', 'BLOWUP', 'PHARYNX']
+['BULB', 'BLOWUP', 'PHARYNX']
